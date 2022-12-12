@@ -43,11 +43,6 @@ class SelectPlayerForm implements Form
         if($data === null) return;
         /** @var Player $target */
         $target = $this->players[$data];
-        $this->owner->queue[strtolower($target->getName())][] = $name;
-        $this->owner->msg($player, $target->getName() . '님에게 친구 요청을 보냈습니다.');
-        if($target->isOnline()){
-            $this->owner->msg($target, $player->getName() . '님이 친구 요청을 보냈습니다. (§b/친구§f)');
-            $this->owner->msg($target, '서버가 §c재부팅§f되면 요청은 초기화됩니다.');
-        }
+        $this->owner->requestFriend($player, $target);
     }
 }
