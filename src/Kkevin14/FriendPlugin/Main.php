@@ -6,8 +6,6 @@ namespace Kkevin14\FriendPlugin;
 use JsonException;
 use Kkevin14\FriendPlugin\command\ChatModeCommand;
 use Kkevin14\FriendPlugin\command\FriendMenuCommand;
-use pocketmine\event\Listener;
-use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
@@ -29,6 +27,8 @@ class Main extends PluginBase
             new FriendMenuCommand($this), new ChatModeCommand($this)
         ]);
         $this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
+
+        $this->queue['kkevin14'] = ['test1', 'test2'];
     }
 
     public function msg(?Player $player, string $msg)
